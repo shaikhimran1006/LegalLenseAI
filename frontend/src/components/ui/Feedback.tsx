@@ -8,6 +8,9 @@ export function Skeleton({ className }: { className?: string }) {
 export function Spinner({ className }: { className?: string }) {
   return (
     <span
+      role="status"
+      aria-label="Loading"
+      aria-live="polite"
       className={cn(
         "inline-block h-5 w-5 animate-spin rounded-full border-2 border-brand-400 border-t-transparent",
         className,

@@ -157,8 +157,9 @@ export default function ActionPack() {
       <div className="card mb-6 p-5">
         <div className="flex items-end gap-3">
           <div className="flex-1">
-            <label className="label">Document</label>
+            <label className="label" htmlFor="actionpack-document">Document</label>
             <select
+              id="actionpack-document"
               className="input"
               value={selectedId ?? ""}
               onChange={(e) => handleSelect(e.target.value)}
@@ -181,7 +182,7 @@ export default function ActionPack() {
       </div>
 
       {generating && (
-        <div className="grid h-64 place-items-center text-sm text-slate-500">
+        <div className="grid h-64 place-items-center text-sm text-slate-500" role="status" aria-label="Generating Action Pack">
           <div className="flex items-center gap-2">
             <Spinner />
             Generating Action Pack&hellip;
@@ -190,7 +191,7 @@ export default function ActionPack() {
       )}
 
       {!generating && error && (
-        <div className="card border-red-200 bg-red-50 p-5 text-center">
+        <div className="card border-red-200 bg-red-50 p-5 text-center" role="alert">
           <p className="text-sm text-red-700">{error}</p>
           <Button variant="secondary" size="sm" className="mt-3" onClick={generate}>
             Try again

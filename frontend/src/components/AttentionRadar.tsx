@@ -14,6 +14,7 @@ export function AttentionRadar({
     { key: "medium", value: summary.medium, color: "#b54708", label: "MEDIUM" },
     { key: "low", value: summary.low, color: "#067647", label: "LOW" },
   ];
+  const summaryLabel = `${total} clause${total === 1 ? "" : "s"}: ${summary.high} high attention, ${summary.medium} medium, ${summary.low} low.`;
 
   const segs = segments
     .filter((s) => s.value > 0)
@@ -42,8 +43,9 @@ export function AttentionRadar({
 
   return (
     <div className={cn("flex items-center gap-5", compact && "gap-4")}>
+      <span className="sr-only" role="img" aria-label={summaryLabel} />
       <div className={cn("relative", compact ? "h-24 w-24" : "h-32 w-32")}>
-        <svg viewBox="0 0 100 100" className="h-full w-full -rotate-0">
+        <svg viewBox="0 0 100 100" className="h-full w-full -rotate-0" aria-hidden="true" focusable="false">
           {pieces.map((p) => (
             <path key={p.key} d={arcPath(p.start, p.end)} fill="none" stroke={p.color} strokeWidth={14} strokeLinecap="butt" />
           ))}

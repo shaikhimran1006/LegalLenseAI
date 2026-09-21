@@ -15,8 +15,9 @@ export default function Settings() {
           <CardHeader title="Preferences" subtitle="Workspace settings" />
           <CardBody className="space-y-4">
             <div>
-              <label className="label">Workspace ID</label>
+              <label className="label" htmlFor="settings-workspace-id">Workspace ID</label>
               <input
+                id="settings-workspace-id"
                 value={workspaceId}
                 onChange={(e) => setWorkspaceId(e.target.value.trim() || "public")}
                 className="input w-full sm:w-64"

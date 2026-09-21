@@ -198,6 +198,7 @@ export default function Analyze() {
                 <button
                   key={key}
                   onClick={() => setFilter(key)}
+                  aria-pressed={filter === key}
                   className={cn(
                     "rounded-full px-2.5 py-1 text-[11px] font-semibold transition-colors",
                     filter === key
@@ -234,7 +235,7 @@ export default function Analyze() {
       {/* RIGHT: Chat + Source viewer + Actions */}
       <div className="flex w-full flex-1 flex-col bg-white lg:w-[45%]">
         {/* Right tabs */}
-        <div className="flex border-b border-slate-200">
+        <div className="flex border-b border-slate-200" role="tablist" aria-label="Document views">
           {[
             { key: "chat" as const, icon: MessageSquare, label: "Chat" },
             { key: "source" as const, icon: Eye, label: "Source" },
@@ -242,6 +243,10 @@ export default function Analyze() {
           ].map((tab) => (
             <button
               key={tab.key}
+              role="tab"
+              aria-selected={rightTab === tab.key}
+              aria-controls={`right-panel-${tab.key}`}
+              id={`tab-${tab.key}`}
               onClick={() => setRightTab(tab.key)}
               className={cn(
                 "flex flex-1 items-center justify-center gap-2 border-b-2 px-4 py-3 text-sm font-medium transition-colors",
@@ -259,7 +264,7 @@ export default function Analyze() {
         {/* Right content */}
         <div className="flex-1 overflow-hidden">
           {rightTab === "chat" && (
-            <div className="h-full">
+            <div id="right-panel-chat" role="tabpanel" aria-labelledby="tab-chat" className="h-full">
               <ChatPanel
                 documentId={id}
                 pendingQuestion={pendingQuestion}
@@ -268,7 +273,7 @@ export default function Analyze() {
             </div>
           )}
           {rightTab === "source" && (
-            <div className="h-full overflow-y-auto">
+            <div id="right-panel-source" role="tabpanel" aria-labelledby="tab-source" className="h-full overflow-y-auto">
               <DocumentViewer
                 pages={viewerPages}
                 highlightText={viewerHighlight}
@@ -278,7 +283,7 @@ export default function Analyze() {
             </div>
           )}
           {rightTab === "actions" && (
-            <div className="h-full overflow-y-auto px-4 py-4">
+            <div id="right-panel-actions" role="tabpanel" aria-labelledby="tab-actions" className="h-full overflow-y-auto px-4 py-4">
               <ActionPackPanel documentId={id} />
             </div>
           )}

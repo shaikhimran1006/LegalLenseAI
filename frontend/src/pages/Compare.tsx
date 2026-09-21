@@ -38,8 +38,9 @@ export default function Compare() {
       <div className="card mb-6 p-5">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <div className="flex-1">
-            <label className="label">Document A (baseline)</label>
+            <label className="label" htmlFor="compare-doc-a">Document A (baseline)</label>
             <input
+              id="compare-doc-a"
               value={docA}
               onChange={(e) => { setDocA(e.target.value); setResult(null); }}
               className="input"
@@ -50,8 +51,9 @@ export default function Compare() {
             <ArrowRight className="h-5 w-5 text-slate-400" />
           </div>
           <div className="flex-1">
-            <label className="label">Document B (comparison)</label>
+            <label className="label" htmlFor="compare-doc-b">Document B (comparison)</label>
             <input
+              id="compare-doc-b"
               value={docB}
               onChange={(e) => { setDocB(e.target.value); setResult(null); }}
               className="input"
@@ -70,7 +72,7 @@ export default function Compare() {
       </div>
 
       {loading && (
-        <div className="grid h-48 place-items-center"><Spinner /></div>
+        <div className="grid h-48 place-items-center" role="status" aria-label="Comparing documents"><Spinner /></div>
       )}
 
       {result && !loading && (

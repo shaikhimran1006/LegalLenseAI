@@ -9,6 +9,7 @@ _TMP = tempfile.mkdtemp(prefix="legallens_test_")
 os.environ["DATABASE_URL"] = f"sqlite:///{Path(_TMP) / 'test.db'}"
 os.environ["FORCE_DEMO"] = "true"
 os.environ["GEMINI_API_KEY"] = "test-key-not-real"
+os.environ["RATE_LIMIT_PER_MINUTE"] = "10000"
 
 import pytest
 from fastapi.testclient import TestClient
@@ -72,13 +73,24 @@ def untrusted_pdf_bytes() -> bytes:
 
 
 def minimal_pdf(content: bytes) -> bytes:
-    objs = b""
-    objs += b"1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\n"
-    objs += b"2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\n"
-    objs += b"3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >> endobj\n"
-    objs += b"4 0 obj << /Length %d >> stream\n" % (len(content),)
-    objs += content
-    objs += b"\nendstream endobj\n"
-    objs += b"5 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\n"
-    trailer = b"xref\n0 6\n0000000000 65535 f \n0000000009 00000 n \n0000000058 00000 n \n0000000115 00000 n \n0000000222 00000 n \n0000000345 00000 n \ntrailer << /Size 6 /Root 1 0 R >>\nstartxref\n0\n%%EOF\n"
-    return objs + trailer
+    header = b"%PDF-1.4\n"
+    objects = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>",
+        b"<< /Length %d >> stream\n" % (len(content),) + content + b"\nendstream\n",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+    ]
+    count = len(objects) + 1
+    body = b""
+    offsets = []
+    for number, obj in enumerate(objects, start=1):
+        offsets.append(len(header) + len(body))
+        body += b"%d 0 obj %s endobj\n" % (number, obj)
+    trailer = (
+        b"xref\n0 %d\n0000000000 65535 f \n" % count
+        + b"".join(b"%010d 00000 n \n" % off for off in offsets)
+        + b"trailer << /Size %d /Root 1 0 R >>\n" % count
+        + b"startxref\n%d\n%%%%EOF\n" % (len(header) + len(body))
+    )
+    return header + body + trailer

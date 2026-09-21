@@ -94,7 +94,7 @@ def get_document(
     return _document_response(row)
 
 
-@router.post("/documents/{document_id}/analyze", response_model=AnalyzeResponse)
+@router.post("/documents/{document_id}/analyze", response_model=AnalyzeResponse, dependencies=[Depends(rate_limit())])
 def analyze_document(
     document_id: str,
     db: Session = Depends(get_db_dependency()),
@@ -133,7 +133,7 @@ def repository2clause(raw) :
         return None
 
 
-@router.post("/documents/{document_id}/ask", response_model=AskResponse)
+@router.post("/documents/{document_id}/ask", response_model=AskResponse, dependencies=[Depends(rate_limit())])
 def ask_question(
     document_id: str,
     payload: AskRequest,
@@ -189,7 +189,7 @@ def _profile_label(context: str) -> str:
     return detect_context_profile(context).label
 
 
-@router.post("/documents/{document_id}/action-pack")
+@router.post("/documents/{document_id}/action-pack", dependencies=[Depends(rate_limit())])
 def generate_action_pack(
     document_id: str,
     payload: ActionPackRequest,
@@ -205,7 +205,7 @@ def generate_action_pack(
     )
 
 
-@router.post("/documents/{document_id}/explain")
+@router.post("/documents/{document_id}/explain", dependencies=[Depends(rate_limit())])
 def explain_clause(
     document_id: str,
     payload: ExplainClauseRequest,
@@ -288,7 +288,7 @@ def get_conversation(
 # Comparison
 # ---------------------------------------------------------------------------
 
-@router.post("/compare", response_model=CompareResponse)
+@router.post("/compare", response_model=CompareResponse, dependencies=[Depends(rate_limit())])
 def compare_documents(
     payload: CompareRequest,
     db: Session = Depends(get_db_dependency()),

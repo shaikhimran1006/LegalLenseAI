@@ -105,19 +105,34 @@ function friendlyError(e: unknown): string {
   return "Could not generate the Action Pack. Please try again.";
 }
 
+// Keep one generated pack per document for the session so that switching tabs
+// (which remounts this panel) does not re-invoke the AI endpoint.
+const _packCache = new Map<string, ActionPackResponse>();
+
 export function ActionPackPanel({ documentId }: { documentId: string }) {
   const { push } = useToast();
-  const [resp, setResp] = useState<ActionPackResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [resp, setResp] = useState<ActionPackResponse | null>(() => _packCache.get(documentId) ?? null);
+  const [loading, setLoading] = useState(() => !_packCache.has(documentId));
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(() => {
+    const cached = _packCache.get(documentId);
+    if (cached) {
+      setResp(cached);
+      setLoading(false);
+      setError(null);
+      return () => {};
+    }
     let cancelled = false;
     setLoading(true);
     setError(null);
     api
       .actionPack(documentId)
-      .then((p) => { if (!cancelled) setResp(p); })
+      .then((p) => {
+        if (cancelled) return;
+        _packCache.set(documentId, p);
+        setResp(p);
+      })
       .catch((e) => {
         const msg = friendlyError(e);
         if (!cancelled) setError(msg);
@@ -125,12 +140,17 @@ export function ActionPackPanel({ documentId }: { documentId: string }) {
       })
       .finally(() => !cancelled && setLoading(false));
     return () => { cancelled = true; };
-  }, [documentId]);
+  }, [documentId, push]);
 
   useEffect(() => {
     const cleanup = load();
     return cleanup;
   }, [load]);
+
+  const retry = useCallback(() => {
+    _packCache.delete(documentId);
+    load();
+  }, [documentId, load]);
 
   if (loading) return (
     <div className="flex flex-col items-center justify-center gap-3 py-16 text-sm text-slate-500">
@@ -144,7 +164,7 @@ export function ActionPackPanel({ documentId }: { documentId: string }) {
         <AlertCircle className="h-7 w-7" />
       </div>
       <p className="text-sm text-slate-600">{error}</p>
-      <Button variant="secondary" size="sm" onClick={load}>
+      <Button variant="secondary" size="sm" onClick={retry}>
         <RefreshCw className="h-3.5 w-3.5" /> Retry
       </Button>
     </div>

@@ -120,8 +120,12 @@ export function ClauseDrawer({
 
           <section>
             <p className="mb-2 text-sm font-medium text-slate-700">Question not answered? Ask about this clause.</p>
+            <label htmlFor="clause-ask-input" className="sr-only">
+              Ask a question about this clause
+            </label>
             <div className="flex gap-2">
               <input
+                id="clause-ask-input"
                 value={throwaway}
                 onChange={(e) => setThrowaway(e.target.value)}
                 onKeyDown={(e) => {
@@ -136,6 +140,7 @@ export function ClauseDrawer({
               <Button
                 size="md"
                 disabled={!throwaway.trim()}
+                aria-label="Ask about this clause"
                 onClick={() => {
                   onAsk(throwaway.trim());
                   setThrowaway("");

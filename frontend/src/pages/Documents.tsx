@@ -92,10 +92,11 @@ export default function Documents() {
       {!loading && sorted.length > 0 && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {sorted.map((d) => (
-            <div
+            <button
               key={d.id}
+              type="button"
               className={cn(
-                "card group cursor-pointer p-5 transition-all hover:shadow-lift",
+                "card group w-full cursor-pointer p-5 text-left transition-all hover:shadow-lift focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400",
                 d.is_sample && "ring-1 ring-brand-100 bg-brand-50/30",
               )}
               onClick={() => navigate(`/analyze?id=${d.id}`)}
@@ -126,7 +127,7 @@ export default function Documents() {
                   </span>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       )}

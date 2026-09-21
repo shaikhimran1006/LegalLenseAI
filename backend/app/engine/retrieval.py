@@ -39,6 +39,12 @@ def validate_file_name(filename: str) -> str:
 def extract_text(data: bytes, extension: str, filename: str = "") -> ExtractedDocument:
     """Extract text + per-page text from PDF/TXT/DOCX bytes."""
     ext = (extension or "").lower().lstrip(".")
+    # Magic-byte checks: a renamed malicious file (e.g. .exe → .pdf) must never
+    # reach a parser. PDFs always start with "%PDF-", DOCX is a ZIP (PK\x03\x04).
+    if ext in {"pdf"} and not data[:5].startswith(b"%PDF-"):
+        raise DocumentExtractionError("The file is not a valid PDF (missing PDF header).")
+    if ext in {"docx"} and not data[:4] == b"PK\x03\x04":
+        raise DocumentExtractionError("The file is not a valid DOCX (missing ZIP header).")
     if ext in {"pdf"}:
         return _extract_pdf(data)
     if ext in {"txt", "text"}:

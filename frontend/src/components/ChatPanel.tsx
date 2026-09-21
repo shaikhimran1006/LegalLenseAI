@@ -48,11 +48,14 @@ export function ChatPanel({
   askRef.current = ask;
 
   useEffect(() => {
-    if (pendingQuestion && !consumedRef.current) {
-      consumedRef.current = true;
-      onConsumed?.();
-      askRef.current(pendingQuestion);
+    if (!pendingQuestion) {
+      consumedRef.current = false;
+      return;
     }
+    if (consumedRef.current) return;
+    consumedRef.current = true;
+    onConsumed?.();
+    askRef.current(pendingQuestion);
   }, [pendingQuestion, onConsumed]);
 
   async function ask(question: string) {
@@ -80,7 +83,7 @@ export function ChatPanel({
 
   return (
     <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white shadow-card">
-      <div className="flex-1 overflow-y-auto px-4 py-4">
+      <div className="flex-1 overflow-y-auto px-4 py-4" role="log" aria-live="polite">
         {messages.length === 0 && (
           <div className="grid h-full place-items-center text-center text-slate-400">
             <div>
@@ -155,9 +158,9 @@ export function ChatPanel({
             );
           })}
           {loading && (
-            <div className="flex justify-start">
+            <div className="flex justify-start" role="status" aria-label="Generating answer">
               <div className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-400">
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
               </div>
             </div>
           )}
@@ -171,7 +174,11 @@ export function ChatPanel({
         }}
         className="flex gap-2 border-t border-slate-200 px-4 py-3"
       >
+        <label htmlFor="chat-input" className="sr-only">
+          Ask a question about this document
+        </label>
         <input
+          id="chat-input"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask any question about this document"

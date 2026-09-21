@@ -75,12 +75,14 @@ export function AppLayout() {
             <Logo mark="" />
           </div>
           <div className="flex flex-1 items-center gap-2">
-            <span className="hidden text-xs text-slate-400 sm:inline">Workspace</span>
+            <label htmlFor="workspace-input" className="hidden text-xs text-slate-400 sm:inline">Workspace</label>
             <input
+              id="workspace-input"
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value.trim() || "public")}
               className="input w-40 !py-1.5 text-xs sm:w-52"
               placeholder="public"
+              aria-label="Workspace ID"
             />
           </div>
         </header>

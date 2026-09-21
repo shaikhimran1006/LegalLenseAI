@@ -54,8 +54,18 @@ export function DocumentUpload({ onUploaded }: { onUploaded: (d: DocumentSummary
         onDragLeave={() => setDragging(false)}
         onDrop={onDrop}
         onClick={() => inputRef.current?.click()}
+        onKeyDown={(e) => {
+          if ((e.key === "Enter" || e.key === " ") && !file) {
+            e.preventDefault();
+            inputRef.current?.click();
+          }
+        }}
+        role={file ? undefined : "button"}
+        tabIndex={file ? -1 : 0}
+        aria-label={file ? undefined : "Choose a legal document to upload"}
+        aria-describedby="upload-hint"
         className={cn(
-          "cursor-pointer rounded-xl border-2 border-dashed p-8 text-center transition-all",
+          "cursor-pointer rounded-xl border-2 border-dashed p-8 text-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400",
           dragging ? "border-brand-400 bg-brand-50" : "border-slate-300 bg-white hover:border-brand-300 hover:bg-slate-50",
         )}
       >
@@ -87,7 +97,7 @@ export function DocumentUpload({ onUploaded }: { onUploaded: (d: DocumentSummary
             <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-slate-100">
               <Upload className="h-6 w-6 text-slate-400" />
             </div>
-            <p className="text-sm font-medium text-slate-700">Drop a legal document or click to browse</p>
+            <p className="text-sm font-medium text-slate-700" id="upload-hint">Drop a legal document or click to browse</p>
             <p className="mt-1 text-xs text-slate-400">PDF, DOCX, or TXT up to 20 MB</p>
           </>
         )}

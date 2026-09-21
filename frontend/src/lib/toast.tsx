@@ -29,10 +29,16 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ push }}>
       {children}
-      <div className="pointer-events-none fixed bottom-4 right-4 z-[100] flex w-80 flex-col gap-2">
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="false"
+        className="pointer-events-none fixed bottom-4 right-4 z-[100] flex w-80 flex-col gap-2"
+      >
         {toasts.map((t) => (
           <div
             key={t.id}
+            role={t.tone === "error" ? "alert" : "status"}
             className={`animate-fade-up pointer-events-auto rounded-lg border px-4 py-3 text-sm shadow-lift ${
               t.tone === "success"
                 ? "border-emerald-200 bg-emerald-50 text-emerald-900"
