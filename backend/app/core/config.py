@@ -44,7 +44,7 @@ class Settings(BaseSettings):
 
     @property
     def cors_origins(self) -> list[str]:
-        return [o.strip() for o in self.frontend_url.split(",") if o.strip()]
+        return [o.strip().rstrip("/") for o in self.frontend_url.split(",") if o.strip()]
 
     @property
     def max_upload_bytes(self) -> int:
