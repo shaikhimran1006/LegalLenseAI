@@ -1,0 +1,1 @@
+"""Document intelligence engine package (attention, retrieval, context ranking)."""

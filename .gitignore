@@ -1,0 +1,40 @@
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.sqlite3
+*.db
+
+# Node
+node_modules/
+dist/
+build/
+*.local
+.vite/
+
+# Uploads / temp
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.tmp
+
+# Logs
+*.log
+logs/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

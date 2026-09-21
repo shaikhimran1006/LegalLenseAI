@@ -1,0 +1,1 @@
+"""AI layer package: Gemini client, prompts, guardrails, structured output helpers."""

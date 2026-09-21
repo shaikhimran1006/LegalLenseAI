@@ -1,0 +1,1 @@
+"""Shared computed-path settings that do not require pydantic-settings to resolve paths first."""

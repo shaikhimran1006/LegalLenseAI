@@ -1,0 +1,479 @@
+{
+  "_meta": {
+    "kind": "legal_lens_demo_seed",
+    "description": "Fictional demo data generated for LegalLens AI. Names, companies, amounts and dates are entirely fictitious.",
+    "fictional_notice": "All entities, people, amounts and dates in this file are clearly fictional and created for demonstration purposes only."
+  },
+  "documents": [
+    {
+      "id": "sample_employment",
+      "filename": "Employment_Agreement_Acme_Alex_Sharma.pdf",
+      "extension": "pdf",
+      "context": "employment",
+      "page_count": 12,
+      "pages": [
+        "EMPLOYMENT AGREEMENT\n\nTHIS EMPLOYMENT AGREEMENT (the \"Agreement\") is entered into on 1 April 2025 (the \"Effective Date\"), between Acme Technologies Private Limited, a company incorporated under the Companies Act, 2013, with its registered office at Level 14, One Horizon Centre, Gurugram, Haryana (hereinafter referred to as the \"Company\") and Mr. Alex Sharma, residing at B-902, Green Meadows, Pune, Maharashtra (hereinafter referred to as the \"Employee\"). The Company and the Employee are individually referred to as a \"Party\" and collectively as the \"Parties\".",
+        "1. POSITION: The Company agrees to employ the Employee as Senior Software Engineer, and the Employee agrees to serve the Company in that capacity, reporting to the Head of Engineering.\n\n2. EFFECTIVE DATE: The employment shall commence on 15 April 2025.\n\n3. PROBATION: The Employee shall be on probation for a period of six (6) months from the date of joining. During the probationary period, either Party may terminate this Agreement by giving seven (7) days' written notice to the other Party. On satisfactory completion of probation, the employment shall be deemed confirmed.",
+        "4. COMPENSATION: The Company shall pay the Employee a monthly basic salary of Rs. 85,000 (Indian Rupees Eighty Five Thousand only), in addition to a monthly special allowance of Rs. 15,000 and such other benefits as may be decided by the Company from time to time. All payments shall be subject to applicable tax deductions.\n\n5. DUTIES: The Employee shall perform duties assigned by the Company, work diligently, and abide by the policies, rules and regulations of the Company.",
+        "6. NOTICE OF RESIGNATION: 6.1 The Employee shall provide the Company with no less than thirty (30) days' written notice of resignation, or payment in lieu of notice at the Company's discretion. 6.2 The Company shall provide the Employee with thirty (30) days' written notice of termination of employment without cause, or payment in lieu. 6.3 The Employee shall serve the notice period in full unless the Company expressly waives it in writing.",
+        "7. TERMINATION BY EMPLOYEE: An Employee who resigns shall continue to discharge duties diligently during the notice period and shall not have access to Company systems after serving the notice.\n\n8. TERMINATION FOR CAUSE: 8.1 The Company may terminate this Agreement for cause if the Employee commits a breach of any term of this Agreement, misconduct, fraud, or acts detrimental to the Company's interests. 8.2 Termination for cause shall be effective immediately upon written notice and the Employee shall not be entitled to notice or salary in lieu of notice.",
+        "9. CONFIDENTIALITY: 9.1 The Employee shall keep confidential all proprietary and confidential information of the Company, including trade secrets, client data, business plans and financial information, during and after employment. 9.2 The obligation shall survive termination of this Agreement.\n\n10. NON-SOLICITATION: The Employee shall not, for a period of twelve (12) months after termination of employment, solicit or attempt to solicit any clients or employees of the Company.",
+        "11. TRAINING AND DEVELOPMENT: 11.1 The Company may sponsor external training programs for the Employee's skill development. 11.2 TRAINING COSTS: The Company provided the Employee a skill-upgradation program worth Rs. 50,000. Should the Employee resign within eighteen (18) months from the completion of the training, the Employee shall repay to the Company the entire training cost of Rs. 50,000 within one month of resignation. In case of delay in repayment, interest at the rate of 18% per annum shall accrue on the outstanding amount.",
+        "12. CODE OF CONDUCT: The Employee shall maintain professional standards of conduct and integrity in all dealings on behalf of the Company.\n\n13. INTELLECTUAL PROPERTY: 13.1 All work performed by the Employee, including inventions, software, designs and documentation, shall be considered work made for hire. 13.2 All intellectual property created during employment shall vest in the Company, and the Employee hereby assigns all rights, title and interest in such intellectual property to the Company.",
+        "14. NON-COMPETITION: 14.1 For a period of twelve (12) months following termination, the Employee shall not, directly or indirectly, engage in, own, or be employed by any business that competes with the Company within a radius of fifty (50) kilometers from the Company's offices.",
+        "15. BUSINESS EXPENSES: The Company shall reimburse reasonable business expenses incurred by the Employee, subject to submission of original receipts and prior approval.\n\n16. LEAVE AND BENEFITS: The Employee shall be entitled to fifteen (15) days of paid annual leave and medical insurance coverage as per Company policy. The Employee shall be eligible for an annual performance review.",
+        "17. DISPUTE RESOLUTION: 17.1 Any dispute arising out of or in connection with this Agreement shall be resolved by binding arbitration under the Arbitration and Conciliation Act, 1996, seated in Pune, Maharashtra. 17.2 The arbitration award shall be final and binding on both Parties.",
+        "18. GENERAL: 18.1 Governing Law: This Agreement shall be governed by and construed in accordance with the laws of India. 18.2 Entire Agreement: This Agreement constitutes the entire agreement between the Parties. 18.3 Company property, including laptops and access credentials, shall be returned upon termination.\n\nIN WITNESS WHEREOF, the Parties have executed this Agreement on 1 April 2025.\n\nFor Acme Technologies Pvt. Ltd. __________________    Mr. Alex Sharma __________________"
+      ],
+      "analysis": {
+        "document_type": "Employment Agreement",
+        "document_title": "Employment Agreement between Acme Technologies Pvt. Ltd. and Alex Sharma",
+        "parties": ["Acme Technologies Private Limited", "Alex Sharma"],
+        "effective_date": "1 April 2025",
+        "expiration_date": "",
+        "jurisdiction": "India",
+        "important_dates": ["1 April 2025 (effective date)", "15 April 2025 (employment start date)"],
+        "financial_amounts": ["Rs. 85,000 monthly basic salary", "Rs. 15,000 monthly special allowance", "Rs. 50,000 training costs"],
+        "attention_summary": {"high": 3, "medium": 6, "low": 11},
+        "important_clauses": [
+          {
+            "title": "Training Repayment",
+            "category": "financial obligation",
+            "importance": "HIGH",
+            "plain_language": "If you resign within 18 months of completing a company-sponsored training program, you must pay back the full Rs. 50,000 training cost, plus interest at 18% per year if repayment is delayed.",
+            "why_it_matters": "This creates a real financial obligation tied to leaving early. Because it is a fixed amount with interest on delay, it is worth confirming exactly which training programs trigger it and whether it applies to resignation before the program even begins.",
+            "source_page": 7,
+            "source_section": "11.2",
+            "evidence": "Should the Employee resign within eighteen (18) months from the completion of the training, the Employee shall repay to the Company the entire training cost of Rs. 50,000 within one month of resignation. In case of delay in repayment, interest at the rate of 18% per annum shall accrue.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Non-Compete Restriction",
+            "category": "non-compete",
+            "importance": "HIGH",
+            "plain_language": "For 12 months after leaving, you cannot work for or start a business that competes with the company within 50 km of its offices.",
+            "why_it_matters": "A 12-month restriction can affect your next job or business plans. The practical impact depends on where you intend to work and how the restriction is interpreted, which is why it deserves professional review.",
+            "source_page": 9,
+            "source_section": "14.1",
+            "evidence": "For a period of twelve (12) months following termination, the Employee shall not, directly or indirectly, engage in, own, or be employed by any business that competes with the Company within a radius of fifty (50) kilometers.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Binding Arbitration",
+            "category": "arbitration",
+            "importance": "HIGH",
+            "plain_language": "Any dispute with the company will be resolved through binding arbitration in Pune, not in court, and the arbitrator's decision will be final.",
+            "why_it_matters": "Arbitration changes how disputes are handled: it is typically faster, more private, and the decision is hard to appeal. Knowing the seat and rules matters if you ever have a disagreement with the company.",
+            "source_page": 11,
+            "source_section": "17.1",
+            "evidence": "Any dispute arising out of or in connection with this Agreement shall be resolved by binding arbitration under the Arbitration and Conciliation Act, 1996, seated in Pune, Maharashtra.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Notice Period",
+            "category": "notice",
+            "importance": "MEDIUM",
+            "plain_language": "You must give at least 30 days' written notice when resigning, and you are expected to serve the full notice period unless the company waives it in writing.",
+            "why_it_matters": "A 30-day notice affects your timing when leaving. The company may also require notice in full, so it is worth clarifying whether it can be negotiated or shortened.",
+            "source_page": 4,
+            "source_section": "6.1",
+            "evidence": "The Employee shall provide the Company with no less than thirty (30) days' written notice of resignation, or payment in lieu of notice at the Company's discretion.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Probation and Early Exit",
+            "category": "termination",
+            "importance": "MEDIUM",
+            "plain_language": "During the first 6 months, either side can end the agreement with just 7 days' notice.",
+            "why_it_matters": "The probation period has different rules from the standard notice period. If you are considering leaving during probation, the applicable notice is shorter.",
+            "source_page": 2,
+            "source_section": "3",
+            "evidence": "The Employee shall be on probation for a period of six (6) months from the date of joining. During the probationary period, either Party may terminate this Agreement by giving seven (7) days' written notice.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Termination for Cause",
+            "category": "termination",
+            "importance": "MEDIUM",
+            "plain_language": "The company can end your employment immediately, without notice or pay in lieu, if it says you committed a breach, misconduct, fraud or an act harmful to its interests.",
+            "why_it_matters": "Summary termination has serious consequences and depends on how 'cause' is interpreted. Understanding the trigger conditions helps you know what conduct could put your notice rights at risk.",
+            "source_page": 5,
+            "source_section": "8.2",
+            "evidence": "Termination for cause shall be effective immediately upon written notice and the Employee shall not be entitled to notice or salary in lieu of notice.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Confidentiality Obligations",
+            "category": "confidentiality",
+            "importance": "MEDIUM",
+            "plain_language": "You must keep the company's confidential information secret, including client data and business plans, both during and after your employment.",
+            "why_it_matters": "This duty continues after you leave. Disclosing client or business information could create problems in future roles, so it helps to know what counts as confidential.",
+            "source_page": 6,
+            "source_section": "9.1",
+            "evidence": "The Employee shall keep confidential all proprietary and confidential information of the Company, including trade secrets, client data, business plans and financial information, during and after employment.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Non-Solicitation",
+            "category": "non-solicitation",
+            "importance": "MEDIUM",
+            "plain_language": "For 12 months after leaving, you cannot try to take the company's clients or employees away with you.",
+            "why_it_matters": "If you join a competitor or start a business, this limits how you can approach clients or co-workers you know from this company.",
+            "source_page": 6,
+            "source_section": "10",
+            "evidence": "The Employee shall not, for a period of twelve (12) months after termination of employment, solicit or attempt to solicit any clients or employees of the Company.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Intellectual Property Assignment",
+            "category": "intellectual property",
+            "importance": "MEDIUM",
+            "plain_language": "Everything you create at work, including code and designs, belongs to the company, and you assign all rights to them.",
+            "why_it_matters": "This affects who owns side projects or personal work if it overlaps with your job. Clarifying scope before you build anything outside work is prudent.",
+            "source_page": 8,
+            "source_section": "13.2",
+            "evidence": "All intellectual property created during employment shall vest in the Company, and the Employee hereby assigns all rights, title and interest in such intellectual property to the Company.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Compensation Structure",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "Your pay is an Rs. 85,000 monthly basic salary plus an Rs. 15,000 monthly allowance, subject to applicable tax deductions.",
+            "why_it_matters": "Confirm the split between basic pay and allowances, since some benefits and calculations are based on the basic salary component.",
+            "source_page": 3,
+            "source_section": "4",
+            "evidence": "The Company shall pay the Employee a monthly basic salary of Rs. 85,000, in addition to a monthly special allowance of Rs. 15,000.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Position and Duties",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "You are hired as a Senior Software Engineer reporting to the Head of Engineering, and must follow company policies.",
+            "why_it_matters": "Standard job-scope wording. Useful to compare with any actual offer email.",
+            "source_page": 3,
+            "source_section": "5",
+            "evidence": "The Employee shall perform duties assigned by the Company, work diligently, and abide by the policies, rules and regulations of the Company.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Place of Work",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "Your reporting structure is to the Head of Engineering.",
+            "why_it_matters": "No significant financial or termination impact.",
+            "source_page": 3,
+            "source_section": "1",
+            "evidence": "The Employee agrees to serve the Company in that capacity, reporting to the Head of Engineering.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Business Expenses",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "The company will pay back reasonable work expenses if you provide original receipts and get prior approval.",
+            "why_it_matters": "Keep receipts and get approval in writing to avoid later disputes about what counts as a business expense.",
+            "source_page": 10,
+            "source_section": "15",
+            "evidence": "The Company shall reimburse reasonable business expenses incurred by the Employee, subject to submission of original receipts and prior approval.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Leave and Annual Review",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "You get 15 days of paid annual leave and medical insurance per company policy, plus an annual performance review.",
+            "why_it_matters": "Detail is deferred to company policy, so check the policy for the exact rules.",
+            "source_page": 10,
+            "source_section": "16",
+            "evidence": "The Employee shall be entitled to fifteen (15) days of paid annual leave and medical insurance coverage as per Company policy.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Benefits Coverage",
+            "category": "insurance",
+            "importance": "LOW",
+            "plain_language": "Medical insurance coverage is provided as per company policy.",
+            "why_it_matters": "Confirm what is actually covered and when coverage begins.",
+            "source_page": 10,
+            "source_section": "16",
+            "evidence": "medical insurance coverage as per Company policy",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Data and Privacy",
+            "category": "data/privacy",
+            "importance": "LOW",
+            "plain_language": "Your access to company systems ends after you serve your notice.",
+            "why_it_matters": "Expect system access to be managed during the notice period.",
+            "source_page": 5,
+            "source_section": "7",
+            "evidence": "shall not have access to Company systems after serving the notice",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Conflict of Interest",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "This clause deals with broader conflicts of interest as part of your code of conduct.",
+            "why_it_matters": "Minor, but relevant if you hold external roles or businesses.",
+            "source_page": 8,
+            "source_section": "12",
+            "evidence": "The Employee shall maintain professional standards of conduct and integrity in all dealings on behalf of the Company.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Governing Law",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "The agreement is governed by the laws of India.",
+            "why_it_matters": "Confirms which country's legal framework applies to interpretation of the agreement.",
+            "source_page": 12,
+            "source_section": "18.1",
+            "evidence": "This Agreement shall be governed by and construed in accordance with the laws of India.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Entire Agreement",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "This document is the full agreement between you and the company.",
+            "why_it_matters": "Anything promised verbally but not written here may not be enforceable.",
+            "source_page": 12,
+            "source_section": "18.2",
+            "evidence": "This Agreement constitutes the entire agreement between the Parties.",
+            "confidence": "LOW"
+          },
+          {
+            "title": "Return of Company Property",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "Laptops and access credentials must be returned when you leave.",
+            "why_it_matters": "Standard; just plan a smooth handover.",
+            "source_page": 12,
+            "source_section": "18.3",
+            "evidence": "Company property, including laptops and access credentials, shall be returned upon termination.",
+            "confidence": "LOW"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sample_contract_b",
+      "filename": "Revised_Employment_Agreement_Acme.pdf",
+      "extension": "pdf",
+      "context": "employment",
+      "page_count": 8,
+      "pages": [
+        "REVISED EMPLOYMENT AGREEMENT\n\nTHIS EMPLOYMENT AGREEMENT is entered into on 1 July 2025 between Acme Technologies Private Limited (the \"Company\") and Mr. Alex Sharma (the \"Employee\").",
+        "1. POSITION: Senior Software Engineer. 2. PROBATION: Six (6) months. During probation either Party may terminate with seven (7) days' written notice.",
+        "3. COMPENSATION: monthly basic salary of Rs. 90,000 plus allowance of Rs. 20,000.",
+        "4. NOTICE OF RESIGNATION: 4.1 The Employee shall provide the Company with no less than ninety (90) days' written notice of resignation, or payment in lieu at the Company's discretion. 4.2 The Employee shall serve the notice period in full unless expressly waived in writing.",
+        "5. TRAINING REPAYMENT: 5.1 The Company provided the Employee a leadership program worth Rs. 2,00,000. Should the Employee resign within twenty-four (24) months of completion, the Employee shall repay the entire training cost of Rs. 2,00,000 within one month of resignation, with interest at 18% per annum on delay.",
+        "6. CONFIDENTIALITY AND NON-SOLICITATION: confidentiality obligations apply during and after employment; non-solicitation of clients and employees for eighteen (18) months after termination. 7. NON-COMPETITION: non-compete for twenty-four (24) months following termination within a radius of fifty kilometers.",
+        "8. DISPUTE RESOLUTION: Any dispute shall be resolved by binding arbitration under the Arbitration and Conciliation Act, 1996, seated in Mumbai, Maharashtra.",
+        "9. RENEWAL: 9.1 This Agreement shall automatically renew for successive one-year periods unless either Party provides sixty (60) days' written notice before the end of the then-current term."
+      ],
+      "analysis": {
+        "document_type": "Employment Agreement",
+        "document_title": "Revised Employment Agreement between Acme Technologies Pvt. Ltd. and Alex Sharma",
+        "parties": ["Acme Technologies Private Limited", "Alex Sharma"],
+        "effective_date": "1 July 2025",
+        "expiration_date": "",
+        "jurisdiction": "India",
+        "important_dates": ["1 July 2025 (effective date)"],
+        "financial_amounts": ["Rs. 90,000 monthly basic salary", "Rs. 20,000 monthly allowance", "Rs. 2,00,000 training costs"],
+        "attention_summary": {"high": 5, "medium": 2, "low": 1},
+        "important_clauses": [
+          {
+            "title": "Notice Period",
+            "category": "notice",
+            "importance": "HIGH",
+            "plain_language": "You must give at least 90 days' written notice when resigning.",
+            "why_it_matters": "A 90-day notice is long and can delay your next job. Verify how strictly it is applied and whether buy-out is allowed.",
+            "source_page": 4,
+            "source_section": "4.1",
+            "evidence": "The Employee shall provide the Company with no less than ninety (90) days' written notice of resignation, or payment in lieu at the Company's discretion.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Training Repayment",
+            "category": "financial obligation",
+            "importance": "HIGH",
+            "plain_language": "If you resign within 24 months, you must repay the full Rs. 2,00,000 leadership program cost plus 18% annual interest on delay.",
+            "why_it_matters": "A significant financial obligation tied to a 24-month retention window. Confirm eligibility triggers before agreeing.",
+            "source_page": 5,
+            "source_section": "5.1",
+            "evidence": "Should the Employee resign within twenty-four (24) months of completion, the Employee shall repay the entire training cost of Rs. 2,00,000 within one month of resignation, with interest at 18% per annum on delay.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Automatic Renewal",
+            "category": "renewal",
+            "importance": "HIGH",
+            "plain_language": "The agreement renews automatically every year unless you give 60 days' written notice to stop it.",
+            "why_it_matters": "Automatic renewal means commitments continue without action from you. Mark the dates and set a reminder well in advance.",
+            "source_page": 8,
+            "source_section": "9.1",
+            "evidence": "This Agreement shall automatically renew for successive one-year periods unless either Party provides sixty (60) days' written notice before the end of the then-current term.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Non-Compete Restriction",
+            "category": "non-compete",
+            "importance": "HIGH",
+            "plain_language": "For 24 months after leaving you cannot work for or own a competing business within 50 km.",
+            "why_it_matters": "A 24-month restriction is longer than many agreements and can affect your next role.",
+            "source_page": 7,
+            "source_section": "7",
+            "evidence": "non-compete for twenty-four (24) months following termination within a radius of fifty kilometers",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Binding Arbitration (Mumbai)",
+            "category": "arbitration",
+            "importance": "HIGH",
+            "plain_language": "Disputes go to binding arbitration seated in Mumbai.",
+            "why_it_matters": "Changes where and how disputes are resolved.",
+            "source_page": 8,
+            "source_section": "8",
+            "evidence": "Any dispute shall be resolved by binding arbitration under the Arbitration and Conciliation Act, 1996, seated in Mumbai, Maharashtra.",
+            "confidence": "HIGH"
+          },
+          {
+            "title": "Probation and Early Exit",
+            "category": "termination",
+            "importance": "MEDIUM",
+            "plain_language": "During the 6-month probation either side needs only 7 days' notice.",
+            "why_it_matters": "Different (shorter) notice applies during probation.",
+            "source_page": 2,
+            "source_section": "2",
+            "evidence": "During probation either Party may terminate with seven (7) days' written notice.",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Confidentiality and Non-Solicitation",
+            "category": "confidentiality",
+            "importance": "MEDIUM",
+            "plain_language": "Confidentiality survives employment; non-solicitation of clients/employees applies for 18 months after leaving.",
+            "why_it_matters": "Ongoing duties after you leave.",
+            "source_page": 6,
+            "source_section": "6",
+            "evidence": "confidentiality obligations apply during and after employment; non-solicitation of clients and employees for eighteen (18) months after termination",
+            "confidence": "MEDIUM"
+          },
+          {
+            "title": "Compensation Structure",
+            "category": "other",
+            "importance": "LOW",
+            "plain_language": "Monthly basic salary of Rs. 90,000 plus allowance of Rs. 20,000.",
+            "why_it_matters": "Information only.",
+            "source_page": 3,
+            "source_section": "3",
+            "evidence": "monthly basic salary of Rs. 90,000 plus allowance of Rs. 20,000",
+            "confidence": "LOW"
+          }
+        ]
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "sample_comparison_ab",
+      "document_a_id": "sample_employment",
+      "document_b_id": "sample_contract_b",
+      "result": {
+        "comparison_rows": [
+          {
+            "area": "Notice of resignation",
+            "contract_a_value": "30 days",
+            "contract_b_value": "90 days",
+            "change": "Significant",
+            "a_source_page": 4,
+            "a_source_section": "6.1",
+            "b_source_page": 4,
+            "b_source_section": "4.1"
+          },
+          {
+            "area": "Training repayment",
+            "contract_a_value": "Rs. 50,000 (18-month window)",
+            "contract_b_value": "Rs. 2,00,000 (24-month window)",
+            "change": "Significant",
+            "a_source_page": 7,
+            "a_source_section": "11.2",
+            "b_source_page": 5,
+            "b_source_section": "5.1"
+          },
+          {
+            "area": "Automatic renewal",
+            "contract_a_value": "Not found",
+            "contract_b_value": "Auto-renewal each year (60 days' notice)",
+            "change": "Added",
+            "a_source_page": 0,
+            "a_source_section": "",
+            "b_source_page": 8,
+            "b_source_section": "9.1"
+          },
+          {
+            "area": "Non-compete duration",
+            "contract_a_value": "12 months",
+            "contract_b_value": "24 months (50 km)",
+            "change": "Modified",
+            "a_source_page": 9,
+            "a_source_section": "14.1",
+            "b_source_page": 7,
+            "b_source_section": "7"
+          },
+          {
+            "area": "Non-solicitation",
+            "contract_a_value": "12 months",
+            "contract_b_value": "18 months",
+            "change": "Modified",
+            "a_source_page": 6,
+            "a_source_section": "10",
+            "b_source_page": 6,
+            "b_source_section": "6"
+          },
+          {
+            "area": "Arbitration seat",
+            "contract_a_value": "Pune",
+            "contract_b_value": "Mumbai",
+            "change": "Minor",
+            "a_source_page": 11,
+            "a_source_section": "17.1",
+            "b_source_page": 8,
+            "b_source_section": "8"
+          },
+          {
+            "area": "Notice buy-out",
+            "contract_a_value": "Payment in lieu at company discretion",
+            "contract_b_value": "Payment in lieu at company discretion",
+            "change": "Minor",
+            "a_source_page": 4,
+            "a_source_section": "6.1",
+            "b_source_page": 4,
+            "b_source_section": "4.1"
+          }
+        ],
+        "important_changes": [
+          "Notice period for resignation increased from 30 days to 90 days (Contract A page 4, section 6.1; Contract B page 4, section 4.1).",
+          "Training repayment increased from Rs. 50,000 to Rs. 2,00,000, and the retention window extended from 18 to 24 months (A page 7, section 11.2; B page 5, section 5.1).",
+          "Automatic one-year renewal with 60 days' notice was added in Contract B (page 8, section 9.1).",
+          "Non-compete duration doubled from 12 to 24 months (A page 9, section 14.1; B page 7, section 7)."
+        ],
+        "clauses_added": [
+          "Automatic renewal of the agreement for successive one-year periods (Contract B page 8, section 9.1)."
+        ],
+        "clauses_removed": [],
+        "clauses_modified": [
+          "Notice period for resignation: 30 days to 90 days.",
+          "Training repayment: Rs. 50,000 to Rs. 2,00,000 with a longer retention window.",
+          "Non-compete restriction: 12 months to 24 months.",
+          "Non-solicitation: 12 months to 18 months.",
+          "Arbitration seat changed from Pune to Mumbai."
+        ]
+      }
+    }
+  ]
+}
