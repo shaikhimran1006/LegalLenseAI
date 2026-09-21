@@ -43,9 +43,15 @@ def rate_limit(max_requests: int | None = None, window_seconds: int = 60):
         bucket = _rate_buckets[key]
         while bucket and now - bucket[0] > window_seconds:
             bucket.popleft()
-        if len(bucket) >= max_requests:
-            raise HTTPException(status_code=429, detail="Too many requests. Please slow down.")
-        bucket.append(now)
+        if bucket:
+            if len(bucket) >= max_requests:
+                raise HTTPException(status_code=429, detail="Too many requests. Please slow down.")
+            bucket.append(now)
+        else:
+            # No entries survive the window: drop the key entirely so the
+            # per-process map never grows without bound (memory leak / DoS guard).
+            _rate_buckets.pop(key, None)
+            _rate_buckets[key].append(now)
 
     return dependency
 

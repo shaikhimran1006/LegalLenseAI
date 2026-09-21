@@ -122,8 +122,8 @@ class AskRequest(BaseModel):
 
 
 class ExplainClauseRequest(BaseModel):
-    clause_id: Optional[str] = None
-    title: Optional[str] = None
+    clause_id: Optional[str] = Field(default=None, max_length=200)
+    title: Optional[str] = Field(default=None, max_length=200)
 
 
 class ActionPackRequest(BaseModel):
@@ -131,8 +131,8 @@ class ActionPackRequest(BaseModel):
 
 
 class CompareRequest(BaseModel):
-    document_a_id: str
-    document_b_id: str
+    document_a_id: str = Field(min_length=1, max_length=200)
+    document_b_id: str = Field(min_length=1, max_length=200)
 
 
 class UploadResponse(BaseModel):

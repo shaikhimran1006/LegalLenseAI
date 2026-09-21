@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, UploadFile
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db_dependency, get_workspace_id, rate_limit
@@ -153,7 +153,7 @@ def ask_question(
 @router.get("/documents/{document_id}/context-ranking")
 def context_ranking(
     document_id: str,
-    context: str = "",
+    context: str = Query(default="", max_length=2000),
     db: Session = Depends(get_db_dependency()),
     workspace_id: str = Depends(get_workspace_id),
 ):

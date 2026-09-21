@@ -52,11 +52,22 @@ def create_app() -> FastAPI:
 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.cors_origins or ["*"],
+        # Never fall back to a wildcard: if no frontend origin is configured,
+        # allow only the bundled local dev servers (credentials are off).
+        allow_origins=settings.cors_origins
+        or ["http://localhost:5173", "http://127.0.0.1:5173"],
         allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
+    @app.middleware("http")
+    async def add_security_headers(request: Request, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        return response
 
     app.include_router(router, prefix="/api")
 

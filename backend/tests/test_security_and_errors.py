@@ -158,6 +158,45 @@ def test_explain_clause_demo_mode(client):
 
 
 # ---------------------------------------------------------------------------
+# Security headers & CORS
+# ---------------------------------------------------------------------------
+
+
+def test_api_responses_carry_security_headers(client):
+    r = client.get("/api/health")
+    assert r.headers.get("x-content-type-options") == "nosniff"
+    assert r.headers.get("x-frame-options") == "DENY"
+    assert r.headers.get("referrer-policy") == "strict-origin-when-cross-origin"
+
+
+def test_cors_never_wildcard_when_origin_configured(client):
+    r = client.options(
+        "/api/documents",
+        headers={
+            "Origin": "http://localhost:5173",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+    assert r.status_code == 200
+    allow = r.headers.get("access-control-allow-origin", "")
+    assert allow == "http://localhost:5173"
+    assert allow != "*"
+
+
+def test_context_ranking_rejects_oversized_query(client):
+    r = client.get("/api/documents/sample_employment/context-ranking", params={"context": "x" * 5000})
+    assert r.status_code == 422
+
+
+def test_compare_request_length_bounds(client):
+    r = client.post(
+        "/api/compare",
+        json={"document_a_id": "a" * 500, "document_b_id": "sample_employment"},
+    )
+    assert r.status_code == 422
+
+
+# ---------------------------------------------------------------------------
 # Rate limiting
 # ---------------------------------------------------------------------------
 
@@ -184,6 +223,29 @@ def test_rate_limit_respects_distinct_origins():
     dep(_FakeRequest(origin="https://a.example"))
     # Different origin = different bucket, must be allowed.
     dep(_FakeRequest(origin="https://b.example"))
+
+
+def test_rate_limit_releases_buckets_after_window(monkeypatch):
+    """Rate-limited clients must not accumulate buckets forever (memory guard)."""
+    from app.api import deps as deps_module
+
+    now = [1000.0]
+    key = "10.99.0.1::https://sweep.example"
+    monkeypatch.setattr(deps_module.time, "monotonic", lambda: now[0])
+
+    dep = deps_module.rate_limit(max_requests=2, window_seconds=60)
+    req = _FakeRequest(host="10.99.0.1", origin="https://sweep.example")
+    dep(req)
+    dep(req)  # bucket has 2 entries now
+    assert len(deps_module._rate_buckets[key]) == 2
+
+    # Advance the clock past the window: the next request should start a fresh
+    # bucket, and its key must not linger as an empty/expired entry.
+    now[0] += 120
+    dep(req)
+    assert key in deps_module._rate_buckets
+    bucket = deps_module._rate_buckets[key]
+    assert len(bucket) == 1  # old entries gone, only the fresh request remains
 
 
 # ---------------------------------------------------------------------------

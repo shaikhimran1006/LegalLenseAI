@@ -34,7 +34,9 @@ export function ClauseCard({
             {rank !== undefined && (
               <span className="text-lg font-bold text-slate-300">#{rank}</span>
             )}
-            <h4 className="text-sm font-semibold text-slate-900">{clause.title}</h4>
+            <span role="heading" aria-level={3} className="text-sm font-semibold text-slate-900">
+              {clause.title}
+            </span>
           </div>
           <p className="mt-0.5 text-xs text-slate-500">
             {categoryLabels[clause.category] ?? clause.category} · Page {clause.source_page}
